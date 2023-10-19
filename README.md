@@ -28,9 +28,6 @@ defines/: 상수 값 모음 .py 파일들 모음 폴더
 
 
 README.md: 도움말 파일
-
-
-readme_resource/: README.md 파일에서 사용 할 이미지 등 소스
 ```
 
 
