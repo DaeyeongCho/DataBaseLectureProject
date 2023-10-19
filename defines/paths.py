@@ -1,0 +1,1 @@
+MAIN_WINDOW_UI_PATH = "../user_interfaces/main_window.ui"
