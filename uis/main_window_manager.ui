@@ -14,43 +14,56 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButtonLogIn">
+   <widget class="QPushButton" name="pushButtonBookManagement">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>270</y>
+      <x>190</x>
+      <y>220</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>로그인</string>
+     <string>도서 관리</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonSignUp">
+   <widget class="QPushButton" name="pushButtonMemberManagement">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>270</y>
+      <x>390</x>
+      <y>220</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>회원가입</string>
+     <string>회원 관리</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelNotification">
+   <widget class="QPushButton" name="pushButtonLoanManagement">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>210</y>
-      <width>361</width>
-      <height>16</height>
+      <x>600</x>
+      <y>220</y>
+      <width>75</width>
+      <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>알림</string>
+     <string>대출 관리</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonLogOut">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>110</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>로그아웃</string>
     </property>
    </widget>
   </widget>
