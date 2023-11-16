@@ -25,19 +25,21 @@ class MainWindowGeneralClass(QMainWindow, form_class):
         self.setWindowIcon(QIcon(funcs.resourcePath(ICON_PATH))) # 아이콘 임포트
 
         self.userInfo: tuple = userInfo # 로그인 시 사용자 정보
+        self.labelUserInfo.setText(", ".join(self.userInfo))
 
         ## ==================== 위젯 연결 ==================== ##
         self.pushButtonLogOut: QPushButton
         self.pushButtonBookList: QPushButton
         self.pushButtonLoanStatus: QPushButton
         self.pushButtonMyInfo: QPushButton
+        self.labelUserInfo: QLabel
 
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
 
     ## ==================== 함수 ==================== ##
     def logOutFunc(self):
-        reply = QMessageBox.question(self, '확인', '로그아웃 하시겠습니까?', 
+        reply = QMessageBox.question(self, LOG_OUT_MESSAGE_BOX_TITLE, LOG_OUT_MESSAGE_BOX_CONTENT, 
                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No, 
                                      QMessageBox.StandardButton.No)
 

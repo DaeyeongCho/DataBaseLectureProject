@@ -66,6 +66,19 @@
      <string>로그아웃</string>
     </property>
    </widget>
+   <widget class="QLabel" name="labelUserInfo">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>641</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>사용자 정보</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

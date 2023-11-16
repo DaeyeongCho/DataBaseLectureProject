@@ -20,3 +20,7 @@ SIGN_UP_SUCCESS = "가입 성공!"
 LOG_IN_ERROR_NO_USERID = "없는 아이디입니다."
 LOG_IN_ERROR_WRONG_PASSWORD = "비밀번호가 틀렸습니다."
 LOG_IN_SUCCESS = "로그인 성공!"
+
+## mainWindowGeneral, mainWindowManager ##
+LOG_OUT_MESSAGE_BOX_TITLE = "확인"
+LOG_OUT_MESSAGE_BOX_CONTENT = "로그아웃 하시겠습니까?"
