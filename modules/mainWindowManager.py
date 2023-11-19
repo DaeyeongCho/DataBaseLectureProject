@@ -11,6 +11,7 @@ from defines.paths import *
 from defines.strings import *
 
 import modules.mainWindow as mainWindow
+import modules.widgetManagerBook as widgetManagerBook
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(MAIN_WINDOW_MANAGER_UI_PATH))[0]
@@ -36,8 +37,10 @@ class MainWindowManagerClass(QMainWindow, form_class):
 
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
+        self.pushButtonBookManagement.clicked.connect(self.viewBookManagement)
 
     ## ==================== 함수 ==================== ##
+    # 로그아웃 함수
     def logOutFunc(self):
         reply = QMessageBox.question(self, LOG_OUT_MESSAGE_BOX_TITLE, LOG_OUT_MESSAGE_BOX_CONTENT, 
                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No, 
@@ -49,3 +52,8 @@ class MainWindowManagerClass(QMainWindow, form_class):
             self.mainWindow.show()
         else:
             return
+        
+    # 도서 관리 버튼 클릭 시 작동 함수
+    def viewBookManagement(self):
+        self.widgetManagerBook = widgetManagerBook.ManagerBookWidgetClass()
+        self.widgetManagerBook.show()

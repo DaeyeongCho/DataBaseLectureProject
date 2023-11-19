@@ -55,11 +55,11 @@ class SignUpDialogClass(QDialog, form_class):
             return
         
         # mssql 검색 연결
-        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET_SELECT)
+        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
         # 입력한 아이디가 이미 존재하는 지 확인하는 쿼리 실행
-        query = "SELECT uid FROM Member WHERE uid = %s"
+        query = "SELECT uid FROM Member WHERE uid = %s;"
         values = (uid, )
         cursor.execute(query, values)
 
@@ -68,16 +68,23 @@ class SignUpDialogClass(QDialog, form_class):
         cursor.execute(query, values)
         connect.commit()
 
+        # mssql 연결 끊기
+        cursor.close()
+        connect.close()
+
 
         # 이미 존재하는 아이디인 경우 가입 불가/아니면 가입 등록 쿼리 실행
         if len(get) != 0:
             self.acceptSignal.emit(SIGN_UP_ERROR_ALREADY_EXIST)
         else:
             # mssql 삽입 연결
-            connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET_INSERT)
+            connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
             cursor = connect.cursor()
 
-            query = "INSERT INTO Member VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            query = '''
+            INSERT INTO Member (uid, password, username, phone, address, email, grade) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s);
+            '''
             values = (uid, password, username, phone, address, email, grade)
             cursor.execute(query, values)
             connect.commit()

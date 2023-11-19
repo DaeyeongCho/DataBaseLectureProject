@@ -2,10 +2,16 @@
 HOST = 'localhost'
 USER = 'pyuser'
 PASSWORD = '1234'
-DATABASE = 'Book'
+DATABASE = 'BookManagement'
 CHARSET = "utf8"
-CHARSET_SELECT = 'EUC-KR'
-CHARSET_INSERT = "utf8"
+
+BOOK_DETAILS_TUPLE = ("bookname", "writer", "publisher", "pubdate", "category", "quantity") 
+BOOK_DETAILS_TUPLE_MESSAGE = ("도서명", "저자", "출판사", "출판일", "카테고리", "재고수량")
+BOOK_CATEGORY_TUPLE = ("전체", "소설", "시/에세이", "인문", "가정/육아", "요리", "건강", "취미/실용/스포츠", "경제/경영", "자기계발", "정치/사회", "역사/문화", "종교", "예술/대중문화", "중/고등참고서", "기술/공학", "외국어", "과학", "취업/수험서", "여행", "컴퓨터/IT", "잡지", "청소년")
+
+## QMessageBox ##
+WARNING_MESSAGE = "경고!"
+INFORMATION_MESSAGE = "정보"
 
 ## mainWindow ##
 GENERAL_MEMBER = "일반회원"

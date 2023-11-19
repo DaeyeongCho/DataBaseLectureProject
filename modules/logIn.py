@@ -40,7 +40,7 @@ class LogInDialogClass(QDialog, form_class):
         password = self.lineEditUserPassword.text()
 
         # mssql 검색 연결
-        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET_SELECT)
+        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
         # 아이디 존재여부 확인 쿼리

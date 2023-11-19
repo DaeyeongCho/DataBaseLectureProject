@@ -40,19 +40,6 @@
      <string>회원가입</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelNotification">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>210</y>
-      <width>361</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>알림</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

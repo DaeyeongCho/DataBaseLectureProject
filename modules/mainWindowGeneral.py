@@ -38,6 +38,7 @@ class MainWindowGeneralClass(QMainWindow, form_class):
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
 
     ## ==================== 함수 ==================== ##
+    # 로그아웃 함수
     def logOutFunc(self):
         reply = QMessageBox.question(self, LOG_OUT_MESSAGE_BOX_TITLE, LOG_OUT_MESSAGE_BOX_CONTENT, 
                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No, 

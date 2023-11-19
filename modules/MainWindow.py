@@ -30,7 +30,6 @@ class MainWindowClass(QMainWindow, form_class):
         ## ==================== 위젯 연결 ==================== ##
         self.pushButtonLogIn: QPushButton
         self.pushButtonSignUp: QPushButton
-        self.labelNotification: QLabel
 
 
         ## ==================== 시그널 연결 ==================== ##
@@ -47,14 +46,13 @@ class MainWindowClass(QMainWindow, form_class):
 
     # 로그인 창에서 확인 버튼 클릭 시 작동하는 함수
     def getLogInDialogAcceptSignal(self, getStr):
-        self.labelNotification.setText(getStr)
-
-        # 로그인 실패 시 아무것도 하지 않음
+        # 로그인 실패 시 경고 문구 표시 후 함수 종료
         if getStr == LOG_IN_ERROR_NO_USERID or getStr == LOG_IN_ERROR_WRONG_PASSWORD:
+            QMessageBox.information(self, WARNING_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
             return
 
         # mssql 검색 연결
-        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET_SELECT)
+        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
         # 회원 정보 확인
@@ -88,4 +86,9 @@ class MainWindowClass(QMainWindow, form_class):
 
     # 회원가입 창에서 확인 버튼 클릭 시 작동하는 함수
     def getSignUpDialogAcceptSignal(self, getStr):
-        self.labelNotification.setText(getStr)
+        # 회원가입 실패 시 경고 문구 표시
+        if getStr == SIGN_UP_ERROR_NO_INPUT or getStr == SIGN_UP_ERROR_ALREADY_EXIST:
+            QMessageBox.information(self, WARNING_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
+        # 회원가입 성공 시 문구 표시
+        elif getStr == SIGN_UP_SUCCESS:
+            QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
