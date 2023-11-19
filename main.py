@@ -2,10 +2,11 @@ import sys
 
 from PyQt6.QtWidgets import *
 
-from modules.MainWindow import WindowClass
+from modules.mainWindow import MainWindowClass
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    myWindow = WindowClass()
+    myWindow = MainWindowClass()
     myWindow.show()
     app.exec()
+    

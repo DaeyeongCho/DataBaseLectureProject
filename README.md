@@ -74,11 +74,11 @@ README.md: 도움말 파일
 ================================
 
 * ### 테이블/속성
-|테이블|속성|
-|---|---|
-|도서|도서번호P/도서명/저자/출판사/출판년도/카테고리/재고권수|
-|회원|회원번호P/회원아이디/비밀번호/회원명/전화번호/주소/이메일/회원상태|
-|대출내역|대출번호P/회원번호R/도서번호R/대출일/반납(예정)일/반납상태|
+| 테이블   | 속성                                                         |
+|----------|--------------------------------------------------------------|
+| 도서     | 도서번호P/도서명/저자/출판사/출판일자/카테고리/재고권수      |
+| 회원     | 회원아이디P/비밀번호/회원명/전화번호/주소/이메일/회원등급    |
+| 대출내역 | 대출번호P/회원아이디R/도서번호R/대출일/반납(예정)일/반납상태 |
 
 
 ### 도서 관리
@@ -119,7 +119,65 @@ README.md: 도움말 파일
 
 
 
+프로그램 사용 전 세팅들
+================================
+
+빌드하기
+--------------------------------
+* modules -> functions.py -> resourcePath 함수의 ["../" + ]를 먼저 제거할 것
+
+* 빌드 시 pyinstaller -w --add-data="images/*;images" --add-data="uis/*;uis" main.py
+
+MSSQL 초기 세팅
+--------------------------------
+SMMS 설정 https://freesugar.tistory.com/35
+
+* B명은 BookManagement, 테이블 명은 Member, Book, Loan으로 아래 쿼리 실행 시 자동 적용
+* 로그인 이름과 비밀번호는 pyuser, 1234로 할 것
+* 사용자 매핑 시 BookManagement 지정
 
 
+```sql
+CREATE database BookManagement;
+go
+
+use BookManagement;
+
+CREATE table Member
+(
+	uid				varchar(20)		NOT NULL		PRIMARY KEY,
+	password		varchar(40)		NOT NULL,
+	username		varchar(20)		NOT NULL,
+	phone			varchar(20)		NULL,
+	address			varchar(40)		NULL,
+	email			varchar(20)		NULL,
+	grade			varchar(20)		NOT NULL
+);
+
+go
+
+CREATE table Book
+(
+	bid				int identity(1, 1)	NOT NULL	PRIMARY KEY,
+	bookname		varchar(80)			NOT NULL,
+	writer			varchar(20)			NOT NULL,
+	publisher		varchar(40)			NULL,
+	pubdate			date				NULL,
+	category		varchar(20)			NULL,
+	quantity		int					NOT NULL
+);
+
+go
+
+CREATE table Loan
+(
+	lid				int identity(1, 1)	NOT NULL	PRIMARY KEY,
+	uid				varchar(20)			NOT NULL	FOREIGN KEY REFERENCES Member (uid) ON DELETE NO ACTION,
+	bid				int					NOT NULL	FOREIGN KEY REFERENCES Book (bid) ON DELETE NO ACTION,
+	loandate		date				NOT NULL,
+	returndate		date				NOT NULL,
+	returnstatus	varchar(20)			NOT NULL,
+);
+```
 
 > 필요 시 내용 추가하기

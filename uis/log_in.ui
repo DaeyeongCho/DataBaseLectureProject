@@ -7,17 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>100</height>
+    <height>107</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget class="QDialogButtonBox" name="buttonBoxAnswer">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>60</y>
+     <y>70</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -33,30 +33,53 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>10</y>
      <width>51</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>사용자명</string>
+    <string>아이디</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditUserName">
+  <widget class="QLineEdit" name="lineEditUserID">
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>20</y>
+     <y>10</y>
      <width>291</width>
      <height>22</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditUserPassword">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>291</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>비밀번호</string>
    </property>
   </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>buttonBoxAnswer</sender>
    <signal>accepted()</signal>
    <receiver>Dialog</receiver>
    <slot>accept()</slot>
@@ -72,7 +95,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>buttonBoxAnswer</sender>
    <signal>rejected()</signal>
    <receiver>Dialog</receiver>
    <slot>reject()</slot>
