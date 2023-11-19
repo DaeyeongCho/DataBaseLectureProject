@@ -25,7 +25,7 @@ class MainWindowGeneralClass(QMainWindow, form_class):
         self.setWindowIcon(QIcon(funcs.resourcePath(ICON_PATH))) # 아이콘 임포트
 
         self.userInfo: tuple = userInfo # 로그인 시 사용자 정보
-        self.labelUserInfo.setText(", ".join(self.userInfo))
+        QMessageBox.information(self, LOG_IN_SUCCESS, LOG_IN_MESSAGE % self.userInfo[2], QMessageBox.StandardButton.Ok)
 
         ## ==================== 위젯 연결 ==================== ##
         self.pushButtonLogOut: QPushButton
