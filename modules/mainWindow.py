@@ -10,8 +10,8 @@ import modules.functions as funcs
 from defines.paths import *
 from defines.strings import *
 
-import modules.logIn as logIn
-import modules.signUp as signUp
+import modules.dialogLogIn as dialogLogIn
+import modules.dialogSignUp as dialogSignUp
 import modules.mainWindowGeneral as mainWindowGeneral
 import modules.mainWindowManager as mainWindowManager
     
@@ -40,7 +40,7 @@ class MainWindowClass(QMainWindow, form_class):
     ## ==================== 함수 ==================== ##
     # 로그인 창 띄우는 함수
     def viewLogInDialog(self):
-        self.logInDialog = logIn.LogInDialogClass()
+        self.logInDialog = dialogLogIn.LogInDialogClass()
         self.logInDialog.acceptSignal.connect(self.getLogInDialogAcceptSignal)
         self.logInDialog.show()
 
@@ -80,7 +80,7 @@ class MainWindowClass(QMainWindow, form_class):
     
     # 회원가입 창 띄우는 함수
     def viewSignUpWidget(self):
-        self.signupDialog = signUp.SignUpDialogClass()
+        self.signupDialog = dialogSignUp.SignUpDialogClass()
         self.signupDialog.acceptSignal.connect(self.getSignUpDialogAcceptSignal)
         self.signupDialog.show()
 

@@ -10,6 +10,8 @@ from PyQt6.QtCore import Qt
 import modules.functions as funcs
 from defines.paths import *
 from defines.strings import *
+
+import modules.dialogAddBook as dialogAddBook
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(WIDGET_MANAGER_BOOK))[0]
@@ -41,6 +43,7 @@ class ManagerBookWidgetClass(QWidget, form_class):
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonSearch.clicked.connect(self.showBookList)
         self.listWidgetBooks.itemClicked.connect(self.showDetailInfo)
+        self.pushButtonAddBook.clicked.connect(self.viewBookAddDialog)
 
     ## ==================== 함수 ==================== ##
     # 책 검색하여 리스트 위젯에 표시
@@ -78,7 +81,6 @@ class ManagerBookWidgetClass(QWidget, form_class):
             item = QListWidgetItem(str(num) + ". " + row[1]) # 아이템의 문구
             item.setData(Qt.ItemDataRole.UserRole, row[0]) # 아이템 도서의 bid를 안보이게 저장
             self.listWidgetBooks.addItem(item)
-            print(row)
             row = cursor.fetchone()
             num = num + 1
 
@@ -93,7 +95,7 @@ class ManagerBookWidgetClass(QWidget, form_class):
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
-        query = f'''
+        query = '''
         SELECT *
         FROM Book
         WHERE bid = %d
@@ -104,12 +106,30 @@ class ManagerBookWidgetClass(QWidget, form_class):
         row = cursor.fetchone()
 
         printInfo = f'''
-{BOOK_DETAILS_TUPLE_MESSAGE[0]}: {row[1]}
-{BOOK_DETAILS_TUPLE_MESSAGE[1]}: {row[2]}
-{BOOK_DETAILS_TUPLE_MESSAGE[2]}: {row[3]}
-{BOOK_DETAILS_TUPLE_MESSAGE[3]}: {row[4]}
-{BOOK_DETAILS_TUPLE_MESSAGE[4]}: {row[5]}
-{BOOK_DETAILS_TUPLE_MESSAGE[5]}: {row[6]}
+        {BOOK_DETAILS_TUPLE_MESSAGE[0]}: {row[1]}
+        {BOOK_DETAILS_TUPLE_MESSAGE[1]}: {row[2]}
+        {BOOK_DETAILS_TUPLE_MESSAGE[2]}: {row[3]}
+        {BOOK_DETAILS_TUPLE_MESSAGE[3]}: {row[4]}
+        {BOOK_DETAILS_TUPLE_MESSAGE[4]}: {row[5]}
+        {BOOK_DETAILS_TUPLE_MESSAGE[5]}: {row[6]}
         '''
 
         self.labelDetailInfo.setText(printInfo)
+
+        self.pushButtonModifyBook.setEnabled(True)
+
+    # 도서 추가 시 작동 함수
+    def viewBookAddDialog(self):
+        self.addBookDialog = dialogAddBook.AddBookDialogClass()
+        self.addBookDialog.acceptSignal.connect(self.bookAddSignal)
+        self.addBookDialog.show()
+
+    # 도서 추가 확인 버튼 클릭 시 작동 함수
+    def bookAddSignal(self, getStr):
+        if getStr == ADD_BOOK_ERROR_NO_INPUT:
+            QMessageBox.information(self, WARNING_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
+        elif getStr == ADD_BOOK_SUCCESS:
+            QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
+            self.showBookList()
+
+        
