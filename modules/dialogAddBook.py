@@ -35,7 +35,7 @@ class AddBookDialogClass(QDialog, form_class):
         self.buttonBoxAccept: QDialogButtonBox
 
         ## ==================== 시그널 연결 ==================== ##
-        self.buttonBoxAccept.clicked.connect(self.addBookFunc)
+        self.buttonBoxAccept.accepted.connect(self.addBookFunc)
         
 
     ## ==================== 함수 ==================== ##
@@ -63,8 +63,8 @@ class AddBookDialogClass(QDialog, form_class):
         cursor = connect.cursor()
 
         # 중복 도서 확인
-        query = "SELECT * FROM Book WHERE bookname = %s AND writer = %s"
-        values = (bookName, writer)
+        query = "SELECT * FROM Book WHERE bookname = %s"
+        values = (bookName, )
         cursor.execute(query, values)
         bookInfo = cursor.fetchall()
 

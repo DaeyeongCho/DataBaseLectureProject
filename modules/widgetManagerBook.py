@@ -27,6 +27,7 @@ class ManagerBookWidgetClass(QWidget, form_class):
 
         self.comboBoxDetails.addItems(BOOK_DETAILS_TUPLE_MESSAGE)
         self.comboBoxCategory.addItems(BOOK_CATEGORY_TUPLE)
+        self.comboBoxDetails.removeItem(4)
 
         self.showBookList()
 
@@ -38,6 +39,7 @@ class ManagerBookWidgetClass(QWidget, form_class):
         self.pushButtonSearch: QPushButton
         self.pushButtonAddBook: QPushButton
         self.pushButtonModifyBook: QPushButton
+        self.pushButtonDeleteBook: QPushButton
         self.labelDetailInfo: QLabel
 
         ## ==================== 시그널 연결 ==================== ##
@@ -116,20 +118,20 @@ class ManagerBookWidgetClass(QWidget, form_class):
 
         self.labelDetailInfo.setText(printInfo)
 
+        # 도서 수정, 삭제 버튼 활성화
         self.pushButtonModifyBook.setEnabled(True)
+        self.pushButtonDeleteBook.setEnabled(True)
 
     # 도서 추가 시 작동 함수
     def viewBookAddDialog(self):
         self.addBookDialog = dialogAddBook.AddBookDialogClass()
-        self.addBookDialog.acceptSignal.connect(self.bookAddSignal)
+        self.addBookDialog.acceptSignal.connect(self.getBookAddAcceptSignal)
         self.addBookDialog.show()
 
     # 도서 추가 확인 버튼 클릭 시 작동 함수
-    def bookAddSignal(self, getStr):
+    def getBookAddAcceptSignal(self, getStr):
         if getStr == ADD_BOOK_ERROR_NO_INPUT:
             QMessageBox.information(self, WARNING_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
         elif getStr == ADD_BOOK_SUCCESS:
             QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
             self.showBookList()
-
-        
