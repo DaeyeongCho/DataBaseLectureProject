@@ -1,5 +1,8 @@
-파일 구조
+설명
 ================================
+
+파일 구조
+--------------------------------
 
 ```txt
 main.py: 메인 함수 코드. 프로그램 실행 시 이 파일 실행
@@ -53,8 +56,8 @@ README.md: 도움말 파일
 ```
 
 
-기능
-================================
+구현 기능
+--------------------------------
 
 * ### 테이블/속성
 | 테이블   | 속성                                                         |
@@ -83,9 +86,9 @@ README.md: 도움말 파일
 * 내 정보 수정
 
 **관리자**
-* 회원 추가
 * 회원 삭제
 * 회원 정보 수정
+* 특정 회원 연체 관리
 
 
 ### 도서 대출/반납
@@ -97,12 +100,52 @@ README.md: 도움말 파일
 
 **관리자**
 * 전체 대출/반납 현황
-* 연체자 목록 확인
+* 연체자 목록 확인 및 연체 관리
 
+
+프로그램 사용 전 세팅들
+================================
+
+MSSQL 초기 세팅
+--------------------------------
+* ### 반드시 해야 프로그램 정상 작동 함!
+
+
+* #### SMMS 설정 https://freesugar.tistory.com/35
+
+* DB명은 BookManagement, 테이블 명은 Member, Book, Loan으로 temp/dbProjectQuery.sql의 쿼리 실행 시 자동 적용
+
+* 로그인 이름과 비밀번호는 pyuser, 1234로 할 것
+
+* 사용자 매핑 시 BookManagement 지정
+
+<br>
+
+* 데이터베이스와 테이블 생성 쿼리는 temp/dbProjectQuery.sql에 있음
+
+* 도서 추가 예시 2개, 회원 추가 예시 2개는 dbProject1.sql에 있음
+
+* 대출 추가 예시는 dbProjectTest3.sql에 있음
+
+
+작업 진행 내용, 이슈
+================================
+
+ui 파일 꾸며주세요
+--------------------------------
+
+* main_window.ui
+* main_window_general.ui
+* main_window_manager.ui
+* dialog_log_in.ui
+* dialog_sign_up.ui
+* widget_manager_book.ui
+* dialog_add_book.ui
+* dialog_modify_book.ui
 
 
 실제 사용 쿼리
-================================
+--------------------------------
 
 ### 회원 가입
 
@@ -140,77 +183,6 @@ SELECT *
 FROM Book
 WHERE bid = bid
 ```
-
-
-프로그램 사용 전 세팅들
-================================
-
-MSSQL 초기 세팅
---------------------------------
-* ### 반드시 해야 프로그램 정상 작동 함!
-
-#### SMMS 설정 https://freesugar.tistory.com/35
-
-* DB명은 BookManagement, 테이블 명은 Member, Book, Loan으로 아래 쿼리 실행 시 자동 적용
-* 로그인 이름과 비밀번호는 pyuser, 1234로 할 것
-* 사용자 매핑 시 BookManagement 지정
-
-
-```sql
-CREATE database BookManagement;
-go
-
-use BookManagement;
-
-CREATE table Member
-(
-	uid				nvarchar(20)		NOT NULL		PRIMARY KEY,
-	password		nvarchar(40)		NOT NULL,
-	username		nvarchar(20)		NOT NULL,
-	phone			nvarchar(20)		NULL,
-	address			nvarchar(40)		NULL,
-	email			nvarchar(20)		NULL,
-	grade			nvarchar(20)		NOT NULL
-);
-
-go
-
-CREATE table Book
-(
-	bid				int identity(1, 1)	NOT NULL	PRIMARY KEY,
-	bookname		nvarchar(80)		NOT NULL,
-	writer			nvarchar(20)		NOT NULL,
-	publisher		nvarchar(40)		NOT NULL,
-	pubdate			date				NOT NULL,
-	category		nvarchar(20)		NULL,
-	quantity		int					NOT NULL
-);
-
-go
-
-CREATE table Loan
-(
-	lid				int identity(1, 1)	NOT NULL	PRIMARY KEY,
-	uid				nvarchar(20)		NOT NULL	FOREIGN KEY REFERENCES Member (uid) ON DELETE NO ACTION,
-	bid				int					NOT NULL	FOREIGN KEY REFERENCES Book (bid) ON DELETE NO ACTION,
-	loandate		date				NOT NULL,
-	returndate		date				NOT NULL,
-	returnstatus	nvarchar(20)		NOT NULL,
-);
-```
-
-
-ui 파일 꾸며주세요
-================================
-
-* main_window.ui
-* main_window_general.ui
-* main_window_manager.ui
-* dialog_log_in.ui
-* dialog_sign_up.ui
-* widget_manager_book.ui
-* dialog_add_book.ui
-* dialog_modify_book.ui
 
 
 빌드하기
