@@ -37,12 +37,14 @@ class WidgetManagerBook(QWidget, form_class):
 
 
 
-        # mssql 검색 연결
-        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET_SELECT)
+        # mssql 연결
+        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
-        # 입력한 아이디가 이미 존재하는 지 확인하는 쿼리 실행
-        query = "SELECT * FROM  WHERE %s ;"
+        # 쿼리 실행
+        query = '''
+
+        '''
         values = ('값 리스트', )
         cursor.execute(query, values)
 

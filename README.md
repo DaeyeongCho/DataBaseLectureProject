@@ -209,6 +209,8 @@ ui 파일 꾸며주세요
 * dialog_log_in.ui
 * dialog_sign_up.ui
 * widget_manager_book.ui
+* dialog_add_book.ui
+* dialog_modify_book.ui
 
 
 빌드하기

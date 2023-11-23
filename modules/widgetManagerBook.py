@@ -12,6 +12,7 @@ from defines.paths import *
 from defines.strings import *
 
 import modules.dialogAddBook as dialogAddBook
+import modules.dialogModifyBook as dialogModify
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(WIDGET_MANAGER_BOOK))[0]
@@ -147,9 +148,19 @@ class ManagerBookWidgetClass(QWidget, form_class):
             QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
             self.showBookList()
 
-    # 도서 삭제 시 작동 함수
+    # 도서 수정 시 작동 함수
     def viewBookModifyDialog(self):
-        pass
+        self.modifyBookDialog = dialogModify.ModifyBookDialogClass(self.selectedBookID)
+        self.modifyBookDialog.acceptSignal.connect(self.bookModifySignal)
+        self.modifyBookDialog.show()
+
+    def bookModifySignal(self, getStr):
+        if getStr == MODIFY_BOOK_SUCCESS:
+            QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
+            self.showBookList()
+            self.pushButtonModifyBook.setEnabled(False)
+            self.pushButtonDeleteBook.setEnabled(False)
+            self.labelDetailInfo.setText("")
 
     # 도서 삭제 시 작동 함수
     def deleteBookFunc(self):
