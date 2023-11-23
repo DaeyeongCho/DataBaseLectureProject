@@ -25,6 +25,10 @@ class ManagerBookWidgetClass(QWidget, form_class):
         self.setupUi(self) # ui 임포트
         self.setWindowIcon(QIcon(funcs.resourcePath(ICON_PATH))) # 아이콘 임포트
 
+        # 선택 도서 정보
+        self.selectedBookID: int = None
+        self.selectedBookName: str = None
+
         self.comboBoxDetails.addItems(BOOK_DETAILS_TUPLE_MESSAGE)
         self.comboBoxCategory.addItems(BOOK_CATEGORY_TUPLE)
         self.comboBoxDetails.removeItem(4)
@@ -46,6 +50,8 @@ class ManagerBookWidgetClass(QWidget, form_class):
         self.pushButtonSearch.clicked.connect(self.showBookList)
         self.listWidgetBooks.itemClicked.connect(self.showDetailInfo)
         self.pushButtonAddBook.clicked.connect(self.viewBookAddDialog)
+        self.pushButtonModifyBook.clicked.connect(self.viewBookModifyDialog)
+        self.pushButtonDeleteBook.clicked.connect(self.deleteBookFunc)
 
     ## ==================== 함수 ==================== ##
     # 책 검색하여 리스트 위젯에 표시
@@ -97,6 +103,7 @@ class ManagerBookWidgetClass(QWidget, form_class):
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
+        # 도서 1권 검색 쿼리
         query = '''
         SELECT *
         FROM Book
@@ -107,6 +114,7 @@ class ManagerBookWidgetClass(QWidget, form_class):
 
         row = cursor.fetchone()
 
+        # 검색 된 도서 정보 출력
         printInfo = f'''
         {BOOK_DETAILS_TUPLE_MESSAGE[0]}: {row[1]}
         {BOOK_DETAILS_TUPLE_MESSAGE[1]}: {row[2]}
@@ -115,12 +123,15 @@ class ManagerBookWidgetClass(QWidget, form_class):
         {BOOK_DETAILS_TUPLE_MESSAGE[4]}: {row[5]}
         {BOOK_DETAILS_TUPLE_MESSAGE[5]}: {row[6]}
         '''
-
         self.labelDetailInfo.setText(printInfo)
 
         # 도서 수정, 삭제 버튼 활성화
         self.pushButtonModifyBook.setEnabled(True)
         self.pushButtonDeleteBook.setEnabled(True)
+
+        # 멤버 변수에 도서 정보 저장
+        self.selectedBookID = row[0]
+        self.selectedBookName = row[1]
 
     # 도서 추가 시 작동 함수
     def viewBookAddDialog(self):
@@ -135,3 +146,56 @@ class ManagerBookWidgetClass(QWidget, form_class):
         elif getStr == ADD_BOOK_SUCCESS:
             QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
             self.showBookList()
+
+    # 도서 삭제 시 작동 함수
+    def viewBookModifyDialog(self):
+        pass
+
+    # 도서 삭제 시 작동 함수
+    def deleteBookFunc(self):
+        reply = QMessageBox.question(self, INFORMATION_MESSAGE, DELETE_BOOK_QUESTION_MESSAGE % self.selectedBookName, 
+                                    QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No, 
+                                    QMessageBox.StandardButton.No)
+
+        if reply == QMessageBox.StandardButton.Yes:
+            # db 연결
+            connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
+            cursor = connect.cursor()
+
+            query = '''
+            SELECT *
+            FROM Loan
+            WHERE bid = %d
+            '''
+            values = (self.selectedBookID, )
+            cursor.execute(query, values)
+
+            get = cursor.fetchall()
+            
+            # 해당 도서를 빌리고 있는 회원 존재 시 무결성을 위해 도서 삭제 불가능
+            if len(get) != 0:
+                QMessageBox.information(self, WARNING_MESSAGE, DELETE_BOOK_ERROR_ON_LOAN, QMessageBox.StandardButton.Ok)
+                cursor.close()
+                connect.close()
+                return
+
+            # 도서를 삭제하는 쿼리
+            query = '''
+            DELETE FROM Book
+            WHERE bid = %d
+            '''
+            values = (self.selectedBookID, )
+            cursor.execute(query, values)
+
+            connect.commit()
+
+            # mssql 연결 끊기
+            cursor.close()
+            connect.close()
+            
+            QMessageBox.information(self, INFORMATION_MESSAGE, DELETE_SUCCESS_MESSAGE, QMessageBox.StandardButton.Ok)
+            self.showBookList()
+            # 도서 수정, 삭제 버튼 비활성화
+            self.pushButtonModifyBook.setEnabled(False)
+            self.pushButtonDeleteBook.setEnabled(False)
+            self.labelDetailInfo.setText("")

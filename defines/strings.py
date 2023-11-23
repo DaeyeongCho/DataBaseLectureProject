@@ -37,3 +37,8 @@ LOG_OUT_MESSAGE_BOX_CONTENT = "로그아웃 하시겠습니까?"
 ADD_BOOK_ERROR_NO_INPUT = "미입력 항목이 존재합니다."
 ADD_BOOK_INFO_SAME_BOOK = "동일한 도서가 존재합니다. 그래도 추가하시겠습니까?"
 ADD_BOOK_SUCCESS = "도서 추가 완료!"
+
+## widgetManagerBook ##
+DELETE_BOOK_QUESTION_MESSAGE = "정말 [%s]도서를 삭제하시겠습니까?"
+DELETE_BOOK_ERROR_ON_LOAN = "해당 도서를 대여중인 회원이 있습니다!"
+DELETE_SUCCESS_MESSAGE = "도서 삭제 완료!"
