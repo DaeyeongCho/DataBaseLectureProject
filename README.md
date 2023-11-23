@@ -155,9 +155,9 @@ ui 파일 꾸며주세요
 실제 사용 쿼리
 --------------------------------
 
-### 회원 가입
+### 메인 화면
 
-**입력 값:** uid, password, username, phone, address, email, grade
+**회원 가입**
 
 ```SQL
 -- 입력한 아이디가 이미 존재하는 지 확인하는 쿼리 --
@@ -165,19 +165,22 @@ SELECT uid FROM Member WHERE uid = uid;
 
 -- 새로운 회원 추가 --
 INSERT INTO Member (uid, password, username, phone, address, email, grade) 
-VALUES (uid, password, username, phone, address, email, grade);
+VALUES ('아이디', '비밀번호', '본명', '000-0000-0000(전화번호)', '주소', '-@-.-(이메일)', '회원 등급(일반회원/관리자)');
 ```
 
-### 로그인
-
-**입력 값:** uid, password
+**로그인**
 
 ```SQL
--- 아이디 존재 여부 확인 및 출력 --
-SELECT * FROM Member WHERE uid = uid
+-- 아이디 존재 여부 확인 및 튜플 출력 --
+-- *비밀번호 대조는 출력된 튜플의 비밀번호와 폼에 입력한 값 비교 --
+SELECT * FROM Member WHERE uid = '아이디'
 ```
 
-### 도서 검색
+
+### 관리자 - 도서 관리
+
+**도서 검색**
+
 ```SQL
 -- 도서 검색--
 SELECT * 
@@ -190,6 +193,38 @@ ORDER BY bookname ASC;
 SELECT *
 FROM Book
 WHERE bid = bid
+```
+
+**도서 추가**
+
+```SQL
+-- 중복 도서 확인 --
+SELECT * FROM Book WHERE bookname = %s
+
+-- 도서 추가 쿼리 --
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) 
+VALUES ('도서명', '저자', '출판사', 'yyyy-mm-dd(출판일)', '카테고리', '재고권수(int)');
+```
+
+**도서 수정**
+
+```SQL
+UPDATE Book
+SET bookname = '도서명', writer = '저자', publisher = '출판사', pubdate = '출판일', category = '카테고리', quantity = '재고권수(int)'
+WHERE bid = '도서번호(int)'
+```
+
+**도서 삭제**
+
+```SQL
+-- 해당 도서를 빌리고 있는 회원이 있는지 확인 *있으면 삭제 불가 --
+SELECT *
+FROM Loan
+WHERE bid = '도서번호(int)'
+
+-- 도서 삭제 --
+DELETE FROM Book
+WHERE bid = '도서번호'
 ```
 
 
