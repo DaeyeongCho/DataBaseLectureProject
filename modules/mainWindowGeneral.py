@@ -11,6 +11,7 @@ from defines.paths import *
 from defines.strings import *
 
 import modules.mainWindow as mainWindow
+import modules.widgetGeneralBook as widgetGeneralBook
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(MAIN_WINDOW_GENERAL_UI_PATH))[0]
@@ -36,6 +37,7 @@ class MainWindowGeneralClass(QMainWindow, form_class):
 
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
+        self.pushButtonBookList.clicked.connect(self.viewBookList)
 
     ## ==================== 함수 ==================== ##
     # 로그아웃 함수
@@ -50,3 +52,8 @@ class MainWindowGeneralClass(QMainWindow, form_class):
             self.mainWindow.show()
         else:
             return
+        
+    # 도서 목록 버튼 클릭 시 작동 함수
+    def viewBookList(self):
+        self.bookList = widgetGeneralBook.WidgetGeneralBook(self.userInfo)
+        self.bookList.show()

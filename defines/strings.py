@@ -46,3 +46,7 @@ ADD_BOOK_SUCCESS = "도서 추가 완료!"
 ## dialogModifyBook ##
 MODIFY_BOOK_QUESTION_MESSAGE = "수정하시겠습니까?"
 MODIFY_BOOK_SUCCESS = "수정 완료!"
+
+## widgetGeneralBook ##
+LOAN_ERROR_NO_QUANTITY = "해당 도서의 재고가 부족합니다."
+LOAN_SUCCESS = "대출되었습니다."
