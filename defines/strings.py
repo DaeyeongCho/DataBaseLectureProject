@@ -46,3 +46,13 @@ ADD_BOOK_SUCCESS = "도서 추가 완료!"
 ## dialogModifyBook ##
 MODIFY_BOOK_QUESTION_MESSAGE = "수정하시겠습니까?"
 MODIFY_BOOK_SUCCESS = "수정 완료!"
+
+## widgetGeneralBook ##
+LOAN_ERROR_ARREARS = "연체된 도서가 존재하여 대출 불가능합니다."
+LOAN_ERROR_NO_QUANTITY = "해당 도서의 재고가 부족합니다."
+LOAN_SUCCESS = "대출되었습니다."
+
+## widgetGeneralLoan ##
+LOAN_NOT_RETURN = "미반납"
+LOAN_RETURNED = "반납됨"
+LOAN_RETURN_QUESTION = "[%s] 도서를 반납하시겠습니까?"

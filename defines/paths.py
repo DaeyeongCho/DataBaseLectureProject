@@ -7,6 +7,9 @@ LOG_IN_UI_PATH = "uis/dialog_log_in.ui"
 SIGN_UP_UI_PATH = "uis/dialog_sign_up.ui"
 
 MAIN_WINDOW_GENERAL_UI_PATH = "uis/main_window_general.ui"
+WIDGET_GENERAL_BOOK = "uis/widget_general_book.ui"
+DIALOG_LOAN_BOOK = "uis/dialog_loan_book.ui"
+WIDGET_GENERAL_LOAN = "uis/widget_general_loan.ui"
 
 MAIN_WINDOW_MANAGER_UI_PATH = "uis/main_window_manager.ui"
 WIDGET_MANAGER_BOOK = "uis/widget_manager_book.ui"

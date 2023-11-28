@@ -14,6 +14,7 @@ from defines.strings import *
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(DIALOG_ADD_BOOK))[0]
 
+
 class AddBookDialogClass(QDialog, form_class):
     acceptSignal = pyqtSignal(str)
 
