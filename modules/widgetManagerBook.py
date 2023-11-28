@@ -177,8 +177,9 @@ class ManagerBookWidgetClass(QWidget, form_class):
             SELECT *
             FROM Loan
             WHERE bid = %d
+            AND returnstatus = %s
             '''
-            values = (self.selectedBookID, )
+            values = (self.selectedBookID, LOAN_NOT_RETURN)
             cursor.execute(query, values)
 
             get = cursor.fetchall()
@@ -189,6 +190,25 @@ class ManagerBookWidgetClass(QWidget, form_class):
                 cursor.close()
                 connect.close()
                 return
+            
+            # 해당 책에 관한 대출정보 모두 삭제
+            query = '''
+            SELECT lid
+            FROM Loan
+            WHERE bid = %d
+            '''
+            values = (self.selectedBookID)
+            cursor.execute(query, values)
+
+            loans = cursor.fetchall()
+
+            for oneLid in loans:
+                query = '''
+                DELETE FROM Loan
+                WHERE lid = %d
+                '''
+                values = (oneLid, )
+                cursor.execute(query, values)
 
             # 도서를 삭제하는 쿼리
             query = '''

@@ -4,6 +4,7 @@ import pymssql
 from PyQt6 import uic
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import *
 
 # 사용자 모듈
 import modules.functions as funcs
@@ -15,7 +16,7 @@ form_class = uic.loadUiType(funcs.resourcePath('ui 파일 경로'))[0]
 
 
 
-class WidgetManagerBook(QWidget, form_class):
+class GeneralLoanWidgetClass(QWidget, form_class):
     def __init__(self):
         super().__init__()
 

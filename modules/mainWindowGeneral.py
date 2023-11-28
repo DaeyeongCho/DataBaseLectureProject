@@ -12,6 +12,7 @@ from defines.strings import *
 
 import modules.mainWindow as mainWindow
 import modules.widgetGeneralBook as widgetGeneralBook
+import modules.widgetGeneralLoan as widgetGeneralLoan
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(MAIN_WINDOW_GENERAL_UI_PATH))[0]
@@ -38,6 +39,7 @@ class MainWindowGeneralClass(QMainWindow, form_class):
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
         self.pushButtonBookList.clicked.connect(self.viewBookList)
+        self.pushButtonLoanStatus.clicked.connect(self.viewLoanStatus)
 
     ## ==================== 함수 ==================== ##
     # 로그아웃 함수
@@ -55,5 +57,10 @@ class MainWindowGeneralClass(QMainWindow, form_class):
         
     # 도서 목록 버튼 클릭 시 작동 함수
     def viewBookList(self):
-        self.bookList = widgetGeneralBook.WidgetGeneralBook(self.userInfo)
+        self.bookList = widgetGeneralBook.GeneralBookWidgetClass(self.userInfo)
         self.bookList.show()
+
+    # 대출 현황 버튼 클릭 시 작동 함수
+    def viewLoanStatus(self):
+        self.loanList = widgetGeneralLoan.GeneralLoanWidgetClass(self.userInfo)
+        self.loanList.show()

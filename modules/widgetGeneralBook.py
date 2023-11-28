@@ -14,11 +14,11 @@ from defines.strings import *
 import modules.dialogLoanBook as dialogLoanBook
     
 # ui 연결 변수
-form_class = uic.loadUiType(funcs.resourcePath(WIDGET_GENERAL_UI_PATH))[0]
+form_class = uic.loadUiType(funcs.resourcePath(WIDGET_GENERAL_BOOK))[0]
 
 
 
-class WidgetGeneralBook(QWidget, form_class):
+class GeneralBookWidgetClass(QWidget, form_class):
     def __init__(self, userInfo):
         super().__init__()
 
@@ -139,3 +139,4 @@ class WidgetGeneralBook(QWidget, form_class):
 
     def loanBookSignalFunc(self, getStr):
         QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
+        self.showBookList()

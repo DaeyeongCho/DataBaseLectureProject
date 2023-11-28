@@ -51,6 +51,21 @@ class LoanBookDialogClass(QDialog, form_class):
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
+        query = '''
+        SELECT lid
+        FROM Loan
+        WHERE uid = %s
+        AND returndate < %s
+        AND returnstatus = %s
+        '''
+        values = (self.uid, datetime.now().strftime("%Y-%m-%d"), LOAN_NOT_RETURN)
+        cursor.execute(query, values)
+        get = cursor.fetchall()
+
+        if len(get) != 0:
+            self.acceptSignal.emit(LOAN_ERROR_ARREARS)
+            return
+
         # 현재 책의 재고가 있는지 확인하는 쿼리 실행
         query = '''
         SELECT quantity
@@ -72,7 +87,7 @@ class LoanBookDialogClass(QDialog, form_class):
             query = '''
             INSERT INTO Loan (uid, bid, loandate, returndate, returnstatus) VALUES (%s, %d, %s, %s, %s);
             '''
-            values = (self.uid, self.bid, loanDate, returnDate, "미반납")
+            values = (self.uid, self.bid, loanDate, returnDate, LOAN_NOT_RETURN)
             cursor.execute(query, values)
 
             connect.commit()

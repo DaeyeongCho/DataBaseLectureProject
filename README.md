@@ -222,6 +222,15 @@ SELECT *
 FROM Loan
 WHERE bid = '도서번호(int)'
 
+-- 해당 도서를 빌리고 있는 사람이 없으면 먼저 대출 내역부터 삭제 --
+-- 해당 도서에 관한 모든 Loan 튜플이 도출됨
+SELECT lid
+FROM Loan
+WHERE bid = '도서번호(int)'
+-- 위에서 도출된 모든 튜플에 대해서 삭제
+DELETE FROM Loan
+WHERE lid = '각 lid값(int)'
+
 -- 도서 삭제 --
 DELETE FROM Book
 WHERE bid = '도서번호'
