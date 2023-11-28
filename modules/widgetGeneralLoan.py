@@ -106,6 +106,28 @@ class GeneralLoanWidgetClass(QWidget, form_class):
             values = (LOAN_RETURNED, self.selectLoan[0])
             cursor.execute(query, values)
 
+
+            # 도서 재고 + 1 추가
+            query = '''
+            SELECT Book.bid, quantity
+            FROM Book, Loan
+            WHERE Book.bid = Loan.bid
+            AND lid = %d
+            '''
+            values = (self.selectLoan[0], )
+            cursor.execute(query, values)
+
+            selectBid, selectQuantity = cursor.fetchone()
+            selectQuantity = selectQuantity + 1
+
+            query = '''
+            UPDATE Book
+            SET quantity = %d
+            WHERE bid = %d
+            '''
+            values = (selectQuantity, selectBid)
+            cursor.execute(query, values)
+
             connect.commit()
 
             # mssql 연결 끊기

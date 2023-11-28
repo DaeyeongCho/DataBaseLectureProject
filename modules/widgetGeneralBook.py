@@ -31,6 +31,7 @@ class GeneralBookWidgetClass(QWidget, form_class):
         # 선택 도서 정보
         self.selectedBookID: int = None
         self.selectedBookName: str = None
+        self.selectedItem: QListWidgetItem = None
 
         self.comboBoxDetails.addItems(BOOK_DETAILS_TUPLE_MESSAGE)
         self.comboBoxCategory.addItems(BOOK_CATEGORY_TUPLE)
@@ -98,6 +99,8 @@ class GeneralBookWidgetClass(QWidget, form_class):
 
     # 리스트 위젯에서 도서 클릭 시 상세정보 표시
     def showDetailInfo(self, item: QListWidgetItem):
+        self.selectedItem = item
+
         # mssql 검색 연결
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
@@ -139,4 +142,4 @@ class GeneralBookWidgetClass(QWidget, form_class):
 
     def loanBookSignalFunc(self, getStr):
         QMessageBox.information(self, INFORMATION_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
-        self.showBookList()
+        self.showDetailInfo(self.selectedItem)
