@@ -135,5 +135,7 @@ class GeneralLoanWidgetClass(QWidget, form_class):
             connect.commit()
 
             self.LoanListRefresh()
+            self.pushButtonBookReturn.setEnabled(False)
+            self.pushButtonBookProlong.setEnabled(False)
         else:
             pass
