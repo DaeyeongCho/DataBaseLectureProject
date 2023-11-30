@@ -87,7 +87,7 @@ class MainWindowClass(QMainWindow, form_class):
     # 회원가입 창에서 확인 버튼 클릭 시 작동하는 함수
     def getSignUpDialogAcceptSignal(self, getStr):
         # 회원가입 실패 시 경고 문구 표시
-        if getStr == SIGN_UP_ERROR_NO_INPUT or getStr == SIGN_UP_ERROR_ALREADY_EXIST:
+        if getStr == SIGN_UP_ERROR_NO_INPUT or getStr == SIGN_UP_ERROR_ALREADY_EXIST or getStr == SIGN_UP_ERROR_SAME_PASSWORD:
             QMessageBox.information(self, WARNING_MESSAGE, getStr, QMessageBox.StandardButton.Ok)
         # 회원가입 성공 시 문구 표시
         elif getStr == SIGN_UP_SUCCESS:

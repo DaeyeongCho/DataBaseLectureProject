@@ -20,6 +20,7 @@ MANAGER_MEMBER = "관리자"
 
 ## signUp - mainWindow ##
 SIGN_UP_ERROR_NO_INPUT = "필수 입력사항이 입력되지 않았습니다."
+SIGN_UP_ERROR_SAME_PASSWORD = "비밀번호 확인이 잘못되었습니다."
 SIGN_UP_ERROR_ALREADY_EXIST = "이미 존재하는 아이디입니다."
 SIGN_UP_SUCCESS = "가입 성공!"
 

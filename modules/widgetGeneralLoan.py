@@ -53,7 +53,7 @@ class GeneralLoanWidgetClass(QWidget, form_class):
         FROM Loan, Book
         WHERE Loan.bid = Book.bid
         AND Loan.uid = %s
-        ORDER BY loandate DESC
+        ORDER BY loandate DESC, lid DESC
         '''
         values = (self.userInfo[0], )
         cursor.execute(query, values)

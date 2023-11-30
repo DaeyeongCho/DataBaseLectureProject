@@ -26,6 +26,7 @@ class SignUpDialogClass(QDialog, form_class):
         ## ==================== 위젯 연결 ==================== ##
         self.lineEditID: QLineEdit
         self.lineEditPassword: QLineEdit
+        self.lineEditPasswordCheck: QLineEdit
         self.lineEditName: QLineEdit
         self.lineEditPhone: QLineEdit
         self.lineEditAddress: QLineEdit
@@ -43,6 +44,7 @@ class SignUpDialogClass(QDialog, form_class):
         # 입력 값 추출
         uid = self.lineEditID.text()
         password = self.lineEditPassword.text()
+        passwordCheck = self.lineEditPasswordCheck.text()
         username = self.lineEditName.text()
         phone = self.lineEditPhone.text()
         address = self.lineEditAddress.text()
@@ -52,6 +54,11 @@ class SignUpDialogClass(QDialog, form_class):
         # 필수 입력 항목 체크
         if (uid == "" or password == "" or username == ""):
             self.acceptSignal.emit(SIGN_UP_ERROR_NO_INPUT)
+            return
+        
+        # 비밀번호 입력 체크
+        if (password != passwordCheck):
+            self.acceptSignal.emit(SIGN_UP_ERROR_SAME_PASSWORD)
             return
         
         # mssql 검색 연결

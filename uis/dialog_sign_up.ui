@@ -70,6 +70,9 @@
    <property name="text">
     <string/>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -88,7 +91,7 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>100</y>
+     <y>140</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -101,7 +104,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>100</y>
+     <y>140</y>
      <width>48</width>
      <height>16</height>
     </rect>
@@ -114,7 +117,7 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>150</y>
+     <y>190</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -127,7 +130,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>150</y>
+     <y>190</y>
      <width>48</width>
      <height>16</height>
     </rect>
@@ -140,7 +143,7 @@
    <property name="geometry">
     <rect>
      <x>210</x>
-     <y>200</y>
+     <y>240</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -153,7 +156,7 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>200</y>
+     <y>240</y>
      <width>48</width>
      <height>16</height>
     </rect>
@@ -165,8 +168,8 @@
   <widget class="QLineEdit" name="lineEditEmail">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>250</y>
+     <x>200</x>
+     <y>290</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -179,7 +182,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>250</y>
+     <y>290</y>
      <width>48</width>
      <height>16</height>
     </rect>
@@ -192,7 +195,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>300</y>
+     <y>340</y>
      <width>48</width>
      <height>16</height>
     </rect>
@@ -205,7 +208,7 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>300</y>
+     <y>340</y>
      <width>101</width>
      <height>22</height>
     </rect>
@@ -220,6 +223,35 @@
      <string>관리자</string>
     </property>
    </item>
+  </widget>
+  <widget class="QLineEdit" name="lineEditPasswordCheck">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>100</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>100</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>비밀번호 확인*</string>
+   </property>
   </widget>
  </widget>
  <resources/>
