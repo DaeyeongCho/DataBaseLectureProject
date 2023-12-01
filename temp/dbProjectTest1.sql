@@ -50,42 +50,42 @@ INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALU
 INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('아주 희미한 빛으로도', '최은영', '문학동네', '2023-08-07', '소설', 1);
 
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('전지적 푸바오 시점', '송영관', '위즈덤하우스', '2023-11-15', '에세이', 3);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('전지적 푸바오 시점', '송영관', '위즈덤하우스', '2023-11-15', '시/에세이', 3);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('불안', '알랭 드 보통', '은행나무', '2012-01-04', '에세이', 2);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('불안', '알랭 드 보통', '은행나무', '2012-01-04', '시/에세이', 2);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('기분이 태도가 되지 말자', '김수현', '하이스트', '2022-11-25', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('기분이 태도가 되지 말자', '김수현', '하이스트', '2022-11-25', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('겨울의 언어', '김겨울', '웅진지식하우스', '2023-11-10', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('겨울의 언어', '김겨울', '웅진지식하우스', '2023-11-10', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('당신은 결국 무엇이든 해내는 사람', '김상현', '필름', '2022-04-20', '에세이', 2);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('당신은 결국 무엇이든 해내는 사람', '김상현', '필름', '2022-04-20', '시/에세이', 2);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('꽃은 무죄다', '이성윤', '아마존의 나비', '2023-11-20', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('꽃은 무죄다', '이성윤', '아마존의 나비', '2023-11-20', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('좋은 일이 오려고 그러나 보다', '박여름', '히읏', '2023-07-26', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('좋은 일이 오려고 그러나 보다', '박여름', '히읏', '2023-07-26', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('푸바오 매일매일 행복해', '에버랜드 동물원', '시공주니어', '2023-09-20', '에세이', 3);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('푸바오 매일매일 행복해', '에버랜드 동물원', '시공주니어', '2023-09-20', '시/에세이', 3);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('한 번뿐인 인생은 어떻게 살아야 하는가', '박찬위', '하이스트', '2023-03-30', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('한 번뿐인 인생은 어떻게 살아야 하는가', '박찬위', '하이스트', '2023-03-30', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('오늘도 살아가는 중입니다', '조민', '참새책방', '2023-09-19', '에세이', 1); 
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('오늘도 살아가는 중입니다', '조민', '참새책방', '2023-09-19', '시/에세이', 1); 
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('당도 100퍼센트의 행복', '정다운 외', '놀', '2023-11-15', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('당도 100퍼센트의 행복', '정다운 외', '놀', '2023-11-15', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('감정은 사라져도 결과는 남는다', '이해인', '필름', '2023-06-15', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('감정은 사라져도 결과는 남는다', '이해인', '필름', '2023-06-15', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('행복한 철학자', '우애령', '하늘재', '2023-11-15', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('행복한 철학자', '우애령', '하늘재', '2023-11-15', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('무명의 감정들:나를 살아내는 일', '쑥', '딥앤와이드', '2023-10-30', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('무명의 감정들:나를 살아내는 일', '쑥', '딥앤와이드', '2023-10-30', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('달리기를 말할 때 내가 하고 싶은 이야기', '무라마키 하루키', '문학사상', '2016-12-15', '에세이', 2);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('달리기를 말할 때 내가 하고 싶은 이야기', '무라마키 하루키', '문학사상', '2016-12-15', '시/에세이', 2);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('망그러진 만화', '유랑', '좋은생각', '2022-11-01', '에세이', 3);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('망그러진 만화', '유랑', '좋은생각', '2022-11-01', '시/에세이', 3);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('죽음의 수용소에서', '빅터 프랭크', '청아출판사', '2020-05-30', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('죽음의 수용소에서', '빅터 프랭크', '청아출판사', '2020-05-30', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('꽃은 누구에게나 핀다', '오은환', '북로망스', '2023-09-19', '에세이', 1);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('꽃은 누구에게나 핀다', '오은환', '북로망스', '2023-09-19', '시/에세이', 1);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('아기 판다 푸바오', '에버랜드 동물원', '시공주니어', '2021-07-20', '에세이', 3);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('아기 판다 푸바오', '에버랜드 동물원', '시공주니어', '2021-07-20', '시/에세이', 3);
 
-INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('나는 너랑 노는 게 젤 좋아', '하태완', '북로망스', '2023-07-17', '에세이', 2);
+INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) VALUES ('나는 너랑 노는 게 젤 좋아', '하태완', '북로망스', '2023-07-17', '시/에세이', 2);
