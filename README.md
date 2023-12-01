@@ -142,14 +142,7 @@ MSSQL 초기 세팅
 ui 파일 꾸며주세요
 --------------------------------
 
-* main_window.ui
-* main_window_general.ui
-* main_window_manager.ui
-* dialog_log_in.ui
-* dialog_sign_up.ui
-* widget_manager_book.ui
-* dialog_add_book.ui
-* dialog_modify_book.ui
+![Alt text](temp/image.png)
 
 
 실제 사용 쿼리
@@ -177,9 +170,106 @@ SELECT * FROM Member WHERE uid = '아이디'
 ```
 
 
-### 관리자 - 도서 관리
+### 일반 회원 - 도서 검색
 
 **도서 검색**
+```SQL
+-- 도서 검색--
+SELECT * 
+FROM Book 
+WHERE 컬럼명 LIKE '%입력값%'
+[AND category = 입력값]
+ORDER BY bookname ASC;
+
+-- 도서 상세정보 --
+SELECT *
+FROM Book
+WHERE bid = bid
+```
+
+**도서 대출**
+```SQL
+-- 회원의 도서 연체 유무 검색 --
+SELECT lid
+FROM Loan
+WHERE uid = '회원id'
+AND returndate < '반납일(date)'
+AND returnstatus = '미반납'
+
+-- 현재 도서의 재고가 있는지 확인하는 쿼리
+SELECT quantity
+FROM Book
+WHERE bid = '도서번호(int)'
+
+-- 도서 대출 쿼리 --
+INSERT INTO Loan (uid, bid, loandate, returndate, returnstatus) 
+VALUES ('회원id', '도서번호(int)', '대출일(date)', '반납예정일(date)', '미반납');
+
+-- 도서 재고 -1 --
+UPDATE Book
+SET quantity = '기존재고수량-1(int)'
+WHERE bid = '도서번호(int)';
+```
+
+### 일반 회원 - 대출 관리
+
+**대출 내역 검색**
+```SQL
+-- 회원의 도서 대출 내역 검색 --
+SELECT bookname, loandate, returndate, returnstatus, lid
+FROM Loan, Book
+WHERE Loan.bid = Book.bid
+AND Loan.uid = '회원id'
+ORDER BY loandate DESC, lid DESC
+
+```
+
+**도서 반납**
+```SQL
+-- 도서 반납 쿼리 --
+UPDATE Loan
+SET returnstatus = '반납됨'
+WHERE lid = '대출번호(int)'
+
+-- 도서 재고 +1을 위한 기존 도서 재고량 검색 --
+SELECT Book.bid, quantity
+FROM Book, Loan
+WHERE Book.bid = Loan.bid
+AND lid = '대출 번호(int)'
+
+-- 도서 재고 +1 --
+UPDATE Book
+SET quantity = '기존재고수량+1(int)'
+WHERE bid = '도서번호(int)'
+```
+
+**대출 기한 연장**
+```SQL
+UPDATE Loan
+SET returndate = '새로운반납일자(date)'
+WHERE lid = '대출번호(int)'
+```
+
+### 일반 회원 - 회원 정보
+
+**회원 정보 수정(전화번호, 주소, 이메일)**
+```SQL
+UPDATE Member
+SET phone = '새전화번호', address = '새주소', email = '새이메일'
+WHERE uid = '회원id'
+```
+
+**회원 비밀번호 수정**
+```SQL
+UPDATE Member
+SET password = '새비밀번호'
+WHERE uid = '회원id'
+```
+
+
+### 관리자 - 도서 관리
+
+**도서 검색** [일반 회원 - 도서 검색]과 동일
 
 ```SQL
 -- 도서 검색--
@@ -235,6 +325,7 @@ WHERE lid = '각 lid값(int)'
 DELETE FROM Book
 WHERE bid = '도서번호'
 ```
+
 
 
 빌드하기

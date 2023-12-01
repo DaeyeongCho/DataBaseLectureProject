@@ -51,6 +51,7 @@ class LoanBookDialogClass(QDialog, form_class):
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
+        # 회원의 연체 도서 유무 검색
         query = '''
         SELECT lid
         FROM Loan
@@ -85,7 +86,8 @@ class LoanBookDialogClass(QDialog, form_class):
             
             # 도서 대출 쿼리 실행
             query = '''
-            INSERT INTO Loan (uid, bid, loandate, returndate, returnstatus) VALUES (%s, %d, %s, %s, %s);
+            INSERT INTO Loan (uid, bid, loandate, returndate, returnstatus) 
+            VALUES (%s, %d, %s, %s, %s);
             '''
             values = (self.uid, self.bid, loanDate, returnDate, LOAN_NOT_RETURN)
             cursor.execute(query, values)
