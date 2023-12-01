@@ -39,7 +39,7 @@ class LoanBookDialogClass(QDialog, form_class):
 
         ## ==================== 위젯 연결 ==================== ##
         self.labelBookName: QLabel
-        self.calendarWidgetReturnDate: QCalendar
+        self.calendarWidgetReturnDate: QCalendarWidget
         self.buttonBoxAccept: QDialogButtonBox
 
         ## ==================== 시그널 연결 ==================== ##

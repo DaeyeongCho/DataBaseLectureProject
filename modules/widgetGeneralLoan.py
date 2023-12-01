@@ -10,6 +10,8 @@ from PyQt6.QtCore import *
 import modules.functions as funcs
 from defines.paths import *
 from defines.strings import *
+
+import modules.dialogProlongLoan as dialogProlongLoan
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(WIDGET_GENERAL_LOAN))[0]
@@ -37,6 +39,7 @@ class GeneralLoanWidgetClass(QWidget, form_class):
         ## ==================== 시그널 연결 ==================== ##
         self.treeWidgetLoanList.itemClicked.connect(self.selectItemFunc)
         self.pushButtonBookReturn.clicked.connect(self.returnBookFunc)
+        self.pushButtonBookProlong.clicked.connect(self.prologBookFunc)
 
     ## ==================== 함수 ==================== ##
     # 대출 리스트 위젯 새로고침 함수
@@ -139,3 +142,8 @@ class GeneralLoanWidgetClass(QWidget, form_class):
             self.pushButtonBookProlong.setEnabled(False)
         else:
             pass
+
+    # 도서 연장하기 시 작동 함수
+    def prologBookFunc(self):
+        self.prolongLoan = dialogProlongLoan.ProlongLoanDialogClass(self.selectLoan)
+        self.prolongLoan.show()

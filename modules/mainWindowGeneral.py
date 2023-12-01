@@ -13,6 +13,7 @@ from defines.strings import *
 import modules.mainWindow as mainWindow
 import modules.widgetGeneralBook as widgetGeneralBook
 import modules.widgetGeneralLoan as widgetGeneralLoan
+import modules.widgetGeneralUserInfo as widgetGeneralUserInfo
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(MAIN_WINDOW_GENERAL_UI_PATH))[0]
@@ -40,6 +41,7 @@ class MainWindowGeneralClass(QMainWindow, form_class):
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
         self.pushButtonBookList.clicked.connect(self.viewBookList)
         self.pushButtonLoanStatus.clicked.connect(self.viewLoanStatus)
+        self.pushButtonMyInfo.clicked.connect(self.viewUserInfo)
 
     ## ==================== 함수 ==================== ##
     # 로그아웃 함수
@@ -64,3 +66,27 @@ class MainWindowGeneralClass(QMainWindow, form_class):
     def viewLoanStatus(self):
         self.loanList = widgetGeneralLoan.GeneralLoanWidgetClass(self.userInfo)
         self.loanList.show()
+
+    # 정보 확인 버튼 클릭 시 작동 함수
+    def viewUserInfo(self):
+        self.userInformation = widgetGeneralUserInfo.GeneralUserInfoWidgetClass(self.userInfo)
+        self.userInformation.acceptSignal.connect(self.refreshUserInfo)
+        self.userInformation.show()
+
+    # 정보 확인에서 정보 변경 시 사용자 정보 새로고침
+    def refreshUserInfo(self, userID):
+        # mssql 검색 연결
+        connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
+        cursor = connect.cursor()
+
+        # 회원 정보 확인
+        query = "SELECT * FROM Member WHERE uid = %s"
+        values = (userID, )
+        cursor.execute(query, values)
+        getUserInfo = cursor.fetchone()
+
+        self.userInfo = getUserInfo
+
+        # mssql 연결 해제
+        cursor.close()
+        connect.close()

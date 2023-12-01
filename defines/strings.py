@@ -57,3 +57,15 @@ LOAN_SUCCESS = "대출되었습니다."
 LOAN_NOT_RETURN = "미반납"
 LOAN_RETURNED = "반납됨"
 LOAN_RETURN_QUESTION = "[%s] 도서를 반납하시겠습니까?"
+
+## widgetGeneralUserInfo ##
+USER_NAME_INTRODUCTION = "%s 회원님"
+SET_USER_INFORMATION_QUESTION_MESSAGE = "회원님의 정보를 수정하시겠습니까?"
+SET_USER_PASSWORD_QUESTION_MESSAGE = "회원님의 정보를 수정하시겠습니까?"
+SET_USER_INFORMATION_SUCCESS = "회원님의 정보가 수정되었습니다."
+SET_USER_PASSWORD_ERROR_NO_INPUT = "미입력된 항목이 존재합니다!"
+SET_USER_PASSWORD_ERROR_DIFFERENT_INPUT = "비밀번호와 비밀번호 확인이 일치하지 않습니다!"
+SET_USER_PASSWORD_SUCCESS = "비밀번호가 변경되었습니다."
+
+## dialogProlongLoan ##
+PROLONG_RETURN_DATE_MESSAGE = "연장되었습니다."
