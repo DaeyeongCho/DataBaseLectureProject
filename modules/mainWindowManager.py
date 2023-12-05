@@ -12,6 +12,8 @@ from defines.strings import *
 
 import modules.mainWindow as mainWindow
 import modules.widgetManagerBook as widgetManagerBook
+import modules.widgetManagerUser as widgetManagerUser
+import modules.widgetManagerLoan as widgetManagerLoan
     
 # ui 연결 변수
 form_class = uic.loadUiType(funcs.resourcePath(MAIN_WINDOW_MANAGER_UI_PATH))[0]
@@ -38,6 +40,8 @@ class MainWindowManagerClass(QMainWindow, form_class):
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
         self.pushButtonBookManagement.clicked.connect(self.viewBookManagement)
+        self.pushButtonMemberManagement.clicked.connect(self.viewUserManagement)
+        self.pushButtonLoanManagement.clicked.connect(self.viewLoanManagement)
 
     ## ==================== 함수 ==================== ##
     # 로그아웃 함수
@@ -57,3 +61,14 @@ class MainWindowManagerClass(QMainWindow, form_class):
     def viewBookManagement(self):
         self.widgetManagerBook = widgetManagerBook.ManagerBookWidgetClass()
         self.widgetManagerBook.show()
+
+
+    # 회원 관리 버튼 클릭 시 작동 함수
+    def viewUserManagement(self):
+        self.widgetManagerUser = widgetManagerUser.ManagerUserWidgetClass()
+        self.widgetManagerUser.show()
+
+    # 대출 관리 버튼 클릭 시 작동 함수
+    def viewLoanManagement(self):
+        self.widgetManagerLoan = widgetManagerLoan.ManagerLoanWidgetClass()
+        self.widgetManagerLoan.show()

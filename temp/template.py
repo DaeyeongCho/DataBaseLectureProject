@@ -52,5 +52,5 @@ class GeneralLoanWidgetClass(QWidget, form_class):
         get = cursor.fetchall()
 
         # mssql 연결 끊기
-        cursor.execute(query, values)
-        connect.commit()
+        cursor.close()
+        connect.close()

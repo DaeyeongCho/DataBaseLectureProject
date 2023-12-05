@@ -41,8 +41,8 @@ class ModifyBookDialogClass(QDialog, form_class):
         row = cursor.fetchone()
 
         # mssql 연결 끊기
-        cursor.execute(query, values)
-        connect.commit()
+        cursor.close()
+        connect.close()
 
         # 불러온 책의 값을 위젯에 적용
         self.lineEditBookName.setText(row[1])
@@ -100,7 +100,7 @@ class ModifyBookDialogClass(QDialog, form_class):
             connect.commit()
 
             # mssql 연결 끊기
-            cursor.execute(query, values)
-            connect.commit()
+            cursor.close()
+            connect.close()
             
             self.acceptSignal.emit(MODIFY_BOOK_SUCCESS)
