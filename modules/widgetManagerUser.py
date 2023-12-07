@@ -55,7 +55,7 @@ class ManagerUserWidgetClass(QWidget, form_class):
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
-        # 쿼리 실행
+        # 전체 회원 정보 검색
         query = f'''
         SELECT uid, username, phone, address, email
         FROM Member

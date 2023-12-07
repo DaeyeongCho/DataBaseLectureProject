@@ -59,7 +59,7 @@ class ManagerLoanWidgetClass(QWidget, form_class):
         connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
         cursor = connect.cursor()
 
-        # 쿼리 실행
+        # 전체 대츨 내역 검색
         query = f'''
         SELECT lid, username, bookname, loandate, returndate, returnstatus
         FROM Member, Book, Loan

@@ -177,7 +177,7 @@ SELECT * FROM Member WHERE uid = '아이디'
 -- 도서 검색--
 SELECT * 
 FROM Book 
-WHERE 컬럼명 LIKE '%입력값%'
+WHERE 도서컬럼명 LIKE '%입력값%'
 [AND category = 입력값]
 ORDER BY bookname ASC;
 
@@ -275,7 +275,7 @@ WHERE uid = '회원id'
 -- 도서 검색--
 SELECT * 
 FROM Book 
-WHERE 컬럼명 LIKE '%입력값%'
+WHERE 도서컬럼명 LIKE '%입력값%'
 [AND category = 입력값]
 ORDER BY bookname ASC;
 
@@ -326,6 +326,35 @@ DELETE FROM Book
 WHERE bid = '도서번호'
 ```
 
+### 관리자 - 회원 관리
+```SQL
+-- 전체 회원 정보 조회 --
+SELECT uid, username, phone, address, email
+FROM Member
+WHERE 회원컬럼명 LIKE '%입력값%'
+
+-- 회원 비밀번호 초기화 --
+UPDATE Member
+SET password = '초기화 할 번호(ex.1111)'
+WHERE uid = '회원id'
+```
+
+### 관리자 - 대출 관리
+```SQL
+-- 전체 대출 내역 조회 --
+SELECT lid, username, bookname, loandate, returndate, returnstatus
+FROM Member, Book, Loan
+WHERE Member.uid = Loan.uid
+AND Book.bid = Loan.bid
+AND 대출컬럼명 LIKE '%입력값%'
+[AND returnstatus = '미반납']
+ORDER BY loandate DESC, returndate DESC
+
+-- 연체 제거 --
+UPDATE Loan
+SET returnstatus = '반납됨'
+WHERE lid = '대출번호(int)'
+```
 
 
 빌드하기
