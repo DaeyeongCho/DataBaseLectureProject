@@ -92,7 +92,6 @@ class ManagerLoanWidgetClass(QWidget, form_class):
     def selectItem(self, item):
         self.selectLoanID = item.data(0, Qt.ItemDataRole.UserRole)
 
-        print(self.selectLoanID)
         if item.text(5) == LOAN_OVERDUE:
             self.pushButtonDeleteOverdue.setEnabled(True)
         else:
