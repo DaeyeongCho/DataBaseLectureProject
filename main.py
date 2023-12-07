@@ -9,3 +9,4 @@ if __name__ == '__main__':
     myWindow = MainWindowClass()
     myWindow.show()
     app.exec()
+    

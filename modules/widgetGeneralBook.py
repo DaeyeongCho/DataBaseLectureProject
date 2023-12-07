@@ -134,6 +134,10 @@ class GeneralBookWidgetClass(QWidget, form_class):
         self.selectedBookID = row[0]
         self.selectedBookName = row[1]
 
+        # mssql 연결 끊기
+        cursor.close()
+        connect.close()
+
     # 대출하기 버튼 클릭 시 작동 함수
     def loanBookFunc(self):
         self.loanBook = dialogLoanBook.LoanBookDialogClass(self.selectedBookID, self.selectedBookName, self.userInfo[0])

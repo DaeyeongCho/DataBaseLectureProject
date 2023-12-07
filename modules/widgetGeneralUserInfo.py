@@ -70,8 +70,8 @@ class GeneralUserInfoWidgetClass(QWidget, form_class):
             connect.commit()
 
             # mssql 연결 끊기
-            cursor.execute(query, values)
-            connect.commit()
+            cursor.close()
+            connect.close()
 
             self.setRefreshUserInfoSignal()
 
@@ -109,8 +109,8 @@ class GeneralUserInfoWidgetClass(QWidget, form_class):
             connect.commit()
 
             # mssql 연결 끊기
-            cursor.execute(query, values)
-            connect.commit()
+            cursor.close()
+            connect.close()
 
             self.setRefreshUserInfoSignal()
 

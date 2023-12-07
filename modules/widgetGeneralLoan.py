@@ -71,8 +71,8 @@ class GeneralLoanWidgetClass(QWidget, form_class):
             row = cursor.fetchone()
 
         # mssql 연결 끊기
-        cursor.execute(query, values)
-        connect.commit()
+        cursor.close()
+        connect.close()
 
 
     # 트리 위젯에서 항목 선택 시 실행 함수
@@ -134,8 +134,8 @@ class GeneralLoanWidgetClass(QWidget, form_class):
             connect.commit()
 
             # mssql 연결 끊기
-            cursor.execute(query, values)
-            connect.commit()
+            cursor.close()
+            connect.close()
 
             self.LoanListRefresh()
             self.pushButtonBookReturn.setEnabled(False)
@@ -146,4 +146,5 @@ class GeneralLoanWidgetClass(QWidget, form_class):
     # 도서 연장하기 시 작동 함수
     def prologBookFunc(self):
         self.prolongLoan = dialogProlongLoan.ProlongLoanDialogClass(self.selectLoan)
+        self.prolongLoan.signal.connect(self.LoanListRefresh)
         self.prolongLoan.show()

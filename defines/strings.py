@@ -69,3 +69,18 @@ SET_USER_PASSWORD_SUCCESS = "비밀번호가 변경되었습니다."
 
 ## dialogProlongLoan ##
 PROLONG_RETURN_DATE_MESSAGE = "연장되었습니다."
+
+## widgetManagerUser ##
+USER_DETAILS_LIST = ("회원 ID", "회원명", "전화번호", "주소", "이메일")
+USER_DETAILS_FIELD_LIST = ("uid", "username", "phone", "address", "email")
+INIT_PASSWORD_VALUE = '1111'
+INIT_USER_PASSWORD_MESSAGE = "%s 회원님의 비밀번호를 초기화 하시겠습니까?"
+INIT_USER_PASSWORD_SUCCESS = "%s 회원님의 비밀번호가 %s로 초기화 되었습니다."
+
+## widgetManagerLoan
+LOAN_DETAILS_LIST = ("회원명", "도서명", "대출일", "반납예정일")
+LOAN_DETAILS_FIELD_LIST = ("username", "bookname", "loandate", "returndate")
+LOAN_OVERDUE = "연체됨"
+LOAN_NOT_OVERDUE = "연체되지 않음"
+DELETE_OVERDUE_MESSAGE = "대출 연체를 해제 하시겠습니까?"
+DELETE_OVERDUE_SUCCESS = "연체를 해제하였습니다."

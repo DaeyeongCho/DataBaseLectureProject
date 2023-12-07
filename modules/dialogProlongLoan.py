@@ -17,6 +17,8 @@ form_class = uic.loadUiType(funcs.resourcePath(DIALOG_PROLONG_LOAN))[0]
 
 
 class ProlongLoanDialogClass(QDialog, form_class):
+    signal = pyqtSignal()
+
     def __init__(self, selectLoan):
         super().__init__()
 
@@ -59,7 +61,9 @@ class ProlongLoanDialogClass(QDialog, form_class):
         connect.commit()
 
         # mssql 연결 끊기
-        cursor.execute(query, values)
-        connect.commit()
+        cursor.close()
+        connect.close()
+
+        self.signal.emit()
 
         QMessageBox.information(self, INFORMATION_MESSAGE, PROLONG_RETURN_DATE_MESSAGE, QMessageBox.StandardButton.Ok)
