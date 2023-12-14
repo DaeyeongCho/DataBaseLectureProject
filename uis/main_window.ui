@@ -6,53 +6,169 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>411</width>
+    <height>425</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>411</width>
+    <height>425</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>411</width>
+    <height>425</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>411</width>
+    <height>425</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButtonLogIn">
+   <widget class="QFrame" name="frameBackground">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>270</y>
-      <width>75</width>
-      <height>24</height>
+      <x>10</x>
+      <y>10</y>
+      <width>391</width>
+      <height>241</height>
      </rect>
     </property>
-    <property name="text">
-     <string>로그인</string>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(C:/Users/jdy08/Visual Studio Code/DataBaseLectureProject/uis/Lobby.jpg);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonSignUp">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>270</y>
-      <width>75</width>
-      <height>24</height>
+      <x>50</x>
+      <y>320</y>
+      <width>121</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color:#0d6efd;
+	border:2px solid #fff;
+	color:#fff;
+	border-radius:5px;
+	padding:6px;
+}
+
+QPushButton:hover,
+QPushButton:clicked{
+	background-color: #0b5ed7;
+	border:2px solid #9ac3fe;
+}</string>
     </property>
     <property name="text">
      <string>회원가입</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonLogIn">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>320</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color:#0d6efd;
+	border:2px solid #fff;
+	color:#fff;
+	border-radius:5px;
+	padding:6px;
+}
+
+QPushButton:hover,
+QPushButton:clicked{
+	background-color: #0b5ed7;
+	border:2px solid #9ac3fe;
+}</string>
+    </property>
+    <property name="text">
+     <string>로그인</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>391</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255,255,255,255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>270</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Welcome to Library</string>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>frameBackground</zorder>
+   <zorder>pushButtonSignUp</zorder>
+   <zorder>pushButtonLogIn</zorder>
+   <zorder>label_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>411</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

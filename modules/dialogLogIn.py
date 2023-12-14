@@ -26,11 +26,11 @@ class LogInDialogClass(QDialog, form_class):
         ## ==================== 위젯 연결 ==================== ##
         self.lineEditUserID: QLineEdit
         self.lineEditUserPassword: QLineEdit
-        self.buttonBoxAnswer: QDialogButtonBox
+        self.pushButtonAnswer: QPushButton
 
 
         ## ==================== 시그널 연결 ==================== ##
-        self.buttonBoxAnswer.accepted.connect(self.buttonBoxAccepted)
+        self.pushButtonAnswer.clicked.connect(self.buttonBoxAccepted)
         
 
     ## ==================== 함수 ==================== ##
@@ -56,10 +56,9 @@ class LogInDialogClass(QDialog, form_class):
         # 아이디 존재여부 확인
         if len(get) == 0: # 아이디가 존재하지 않을 때
             self.acceptSignal.emit(LOG_IN_ERROR_NO_USERID)
-            return
         elif get[0][1] != password: # 비밀번호가 틀릴 때
             self.acceptSignal.emit(LOG_IN_ERROR_WRONG_PASSWORD)
-            return
         else: # 로그인 성공
             self.acceptSignal.emit(uid)
-            return
+        
+        self.close()

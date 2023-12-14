@@ -6,78 +6,188 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>653</width>
+    <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButtonBookManagement">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>220</y>
-      <width>75</width>
-      <height>24</height>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>331</height>
      </rect>
     </property>
-    <property name="text">
-     <string>도서 관리</string>
+    <property name="styleSheet">
+     <string notr="true">border-top-left-radius:50px;
+</string>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonMemberManagement">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>220</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
     </property>
-    <property name="text">
-     <string>회원 관리</string>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonLoanManagement">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>220</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>대출 관리</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonLogOut">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>110</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>로그아웃</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelUserInfo">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>30</y>
-      <width>621</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>사용자 정보</string>
-    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>0</y>
+       <width>341</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color : white;
+border-image : url(C:/Users/jdy08/Visual Studio Code/DataBaseLectureProject/uis/book.png);
+border-top-left-radius:50px;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonMemberManagement">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>240</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#0d6efd;
+	border:2px solid #fff;
+	color:#fff;
+	border-radius:5px;
+	padding:6px;
+}
+
+QPushButton:hover,
+QPushButton:clicked{
+	background-color: #0b5ed7;
+	border:2px solid #9ac3fe;
+}</string>
+     </property>
+     <property name="text">
+      <string>회원 관리</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonBookManagement">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>240</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#0d6efd;
+	border:2px solid #fff;
+	color:#fff;
+	border-radius:5px;
+	padding:6px;
+}
+
+QPushButton:hover,
+QPushButton:clicked{
+	background-color: #0b5ed7;
+	border:2px solid #9ac3fe;
+}</string>
+     </property>
+     <property name="text">
+      <string>도서 관리</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonLoanManagement">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>240</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#0d6efd;
+	border:2px solid #fff;
+	color:#fff;
+	border-radius:5px;
+	padding:6px;
+}
+
+QPushButton:hover,
+QPushButton:clicked{
+	background-color: #0b5ed7;
+	border:2px solid #9ac3fe;
+}</string>
+     </property>
+     <property name="text">
+      <string>대출 관리</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonLogOut">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>280</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#0d6efd;
+	border:2px solid #fff;
+	color:#fff;
+	border-radius:5px;
+	padding:6px;
+}
+
+QPushButton:hover,
+QPushButton:clicked{
+	background-color: #0b5ed7;
+	border:2px solid #9ac3fe;
+}</string>
+     </property>
+     <property name="text">
+      <string>로그아웃</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelUserHello">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>50</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #2E3440; /* 글자색 */
+font-family: 'Arial'; /* 글꼴 */
+font-size: 12pt; /* 글자 크기 */
+font-weight: bold; /* 글자 굵기 */
+text-align: center; /* 텍스트 정렬 */
+background-color: #ECEFF4; /* 배경색 */
+padding: 5px; /* 패딩 */
+border-radius: 10px; /* 테두리 둥글게 */
+border: 2px solid #88C0D0; /* 테두리 색과 굵기 */</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -85,7 +195,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>653</width>
      <height>22</height>
     </rect>
    </property>

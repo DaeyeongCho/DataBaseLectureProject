@@ -33,6 +33,7 @@ LOG_IN_SUCCESS = "로그인 성공!"
 LOG_IN_MESSAGE = "반갑습니다. %s회원님!"
 LOG_OUT_MESSAGE_BOX_TITLE = "확인"
 LOG_OUT_MESSAGE_BOX_CONTENT = "로그아웃 하시겠습니까?"
+HELLO_MESSAGE = "안녕하세요, %s 고객님!"
 
 ## widgetManagerBook ##
 DELETE_BOOK_QUESTION_MESSAGE = "정말 [%s]도서를 삭제하시겠습니까?"
