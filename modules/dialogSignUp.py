@@ -32,11 +32,11 @@ class SignUpDialogClass(QDialog, form_class):
         self.lineEditAddress: QLineEdit
         self.lineEditEmail: QLineEdit
         self.comboBoxGrade: QComboBox
-        self.buttonBoxAnswer: QDialogButtonBox
+        self.pushButtonAnswer: QPushButton
 
 
         ## ==================== 시그널 연결 ==================== ##
-        self.buttonBoxAnswer.accepted.connect(self.buttonBoxAccepted) # OK 버튼 클릭 시그널 연결
+        self.pushButtonAnswer.clicked.connect(self.buttonBoxAccepted) # OK 버튼 클릭 시그널 연결
 
 
     ## ==================== 함수 ==================== ##
@@ -54,11 +54,13 @@ class SignUpDialogClass(QDialog, form_class):
         # 필수 입력 항목 체크
         if (uid == "" or password == "" or username == ""):
             self.acceptSignal.emit(SIGN_UP_ERROR_NO_INPUT)
+            self.close()
             return
         
         # 비밀번호 입력 체크
         if (password != passwordCheck):
             self.acceptSignal.emit(SIGN_UP_ERROR_SAME_PASSWORD)
+            self.close()
             return
         
         # mssql 검색 연결
@@ -83,6 +85,7 @@ class SignUpDialogClass(QDialog, form_class):
         # 이미 존재하는 아이디인 경우 가입 불가/아니면 가입 등록 쿼리 실행
         if len(get) != 0:
             self.acceptSignal.emit(SIGN_UP_ERROR_ALREADY_EXIST)
+            self.close()
         else:
             # mssql 삽입 연결
             connect = pymssql.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE, charset=CHARSET)
@@ -100,3 +103,4 @@ class SignUpDialogClass(QDialog, form_class):
             connect.close()
 
             self.acceptSignal.emit(SIGN_UP_SUCCESS)
+            self.close()

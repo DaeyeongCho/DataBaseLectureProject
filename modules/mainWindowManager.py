@@ -30,12 +30,14 @@ class MainWindowManagerClass(QMainWindow, form_class):
         self.userInfo: tuple = userInfo # 로그인 시 사용자 정보
         QMessageBox.information(self, LOG_IN_SUCCESS, LOG_IN_MESSAGE % self.userInfo[2], QMessageBox.StandardButton.Ok)
 
+        self.labelUserHello.setText(HELLO_MESSAGE % self.userInfo[2])
+
         ## ==================== 위젯 연결 ==================== ##
         self.pushButtonLogOut: QPushButton
         self.pushButtonBookManagement: QPushButton
         self.pushButtonMemberManagement: QPushButton
         self.pushButtonLoanManagement: QPushButton
-        self.labelUserInfo: QLabel
+        self.labelUserHello: QLabel
 
         ## ==================== 시그널 연결 ==================== ##
         self.pushButtonLogOut.clicked.connect(self.logOutFunc)
