@@ -91,7 +91,7 @@ border-bottom-right-radius:50px;</string>
     <rect>
      <x>300</x>
      <y>80</y>
-     <width>81</width>
+     <width>221</width>
      <height>40</height>
     </rect>
    </property>
@@ -114,7 +114,7 @@ padding-bottom:7px;</string>
     <rect>
      <x>300</x>
      <y>130</y>
-     <width>81</width>
+     <width>221</width>
      <height>40</height>
     </rect>
    </property>
@@ -137,7 +137,7 @@ padding-bottom:7px;</string>
     <rect>
      <x>300</x>
      <y>230</y>
-     <width>81</width>
+     <width>221</width>
      <height>40</height>
     </rect>
    </property>
@@ -237,9 +237,9 @@ padding-bottom:7px;</string>
   <widget class="QComboBox" name="comboBoxCategory">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>400</x>
      <y>290</y>
-     <width>101</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
@@ -247,9 +247,9 @@ padding-bottom:7px;</string>
   <widget class="QSpinBox" name="spinBoxQuantity">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>400</x>
      <y>340</y>
-     <width>91</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>

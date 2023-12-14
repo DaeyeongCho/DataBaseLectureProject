@@ -79,7 +79,7 @@ border-top-left-radius:50px;
     <rect>
      <x>300</x>
      <y>130</y>
-     <width>81</width>
+     <width>221</width>
      <height>40</height>
     </rect>
    </property>
@@ -147,7 +147,7 @@ padding-bottom:7px;</string>
     <rect>
      <x>300</x>
      <y>80</y>
-     <width>81</width>
+     <width>221</width>
      <height>40</height>
     </rect>
    </property>
@@ -188,7 +188,7 @@ padding-bottom:7px;</string>
     <string>Stock of Book</string>
    </property>
   </widget>
-  <widget class="QDialogButtonBox" name="buttonBoxAccept_2">
+  <widget class="QDialogButtonBox" name="buttonBoxAccept">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -209,7 +209,7 @@ padding-bottom:7px;</string>
     <rect>
      <x>300</x>
      <y>230</y>
-     <width>81</width>
+     <width>221</width>
      <height>40</height>
     </rect>
    </property>
@@ -230,9 +230,9 @@ padding-bottom:7px;</string>
   <widget class="QDateEdit" name="dateEditPubDate">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>419</x>
      <y>190</y>
-     <width>110</width>
+     <width>101</width>
      <height>22</height>
     </rect>
    </property>
@@ -240,9 +240,9 @@ padding-bottom:7px;</string>
   <widget class="QComboBox" name="comboBoxCategory">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>400</x>
      <y>290</y>
-     <width>101</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
@@ -250,9 +250,9 @@ padding-bottom:7px;</string>
   <widget class="QSpinBox" name="spinBoxQuantity">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>400</x>
      <y>340</y>
-     <width>101</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
@@ -265,7 +265,7 @@ padding-bottom:7px;</string>
   <zorder>label_8</zorder>
   <zorder>lineEditBookName</zorder>
   <zorder>lineEdit_6</zorder>
-  <zorder>buttonBoxAccept_2</zorder>
+  <zorder>buttonBoxAccept</zorder>
   <zorder>lineEditPublisher</zorder>
   <zorder>dateEditPubDate</zorder>
   <zorder>comboBoxCategory</zorder>
