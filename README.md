@@ -153,10 +153,10 @@ ui 파일 꾸며주세요
 **회원 가입**
 
 ```SQL
--- 입력한 아이디가 이미 존재하는 지 확인하는 쿼리 --
+-- /하/ 입력한 아이디가 이미 존재하는 지 확인하는 쿼리 --
 SELECT uid FROM Member WHERE uid = uid;
 
--- 새로운 회원 추가 --
+-- /하/ 새로운 회원 추가 --
 INSERT INTO Member (uid, password, username, phone, address, email, grade) 
 VALUES ('아이디', '비밀번호', '본명', '000-0000-0000(전화번호)', '주소', '-@-.-(이메일)', '회원 등급(일반회원/관리자)');
 ```
@@ -164,7 +164,7 @@ VALUES ('아이디', '비밀번호', '본명', '000-0000-0000(전화번호)', '�
 **로그인**
 
 ```SQL
--- 아이디 존재 여부 확인 및 튜플 출력 --
+-- /하/ 아이디 존재 여부 확인 및 튜플 출력 --
 -- *비밀번호 대조는 출력된 튜플의 비밀번호와 폼에 입력한 값 비교 --
 SELECT * FROM Member WHERE uid = '아이디'
 ```
@@ -174,7 +174,7 @@ SELECT * FROM Member WHERE uid = '아이디'
 
 **도서 검색**
 ```SQL
--- 도서 검색 및 상세 정보 출력 --
+-- /상 중첩/ 도서 검색 및 상세 정보 출력 --
 SELECT *
 FROM Book
 WHERE bid IN (
@@ -189,7 +189,7 @@ ORDER BY bookname ASC;
 
 **도서 대출**
 ```SQL
--- 회원의 도서 연체 유무 검색 --
+-- /상 중첩/ 회원의 도서 연체 유무 검색 --
 SELECT lid
 FROM Loan
 WHERE uid = '회원id'
@@ -200,18 +200,18 @@ AND lid IN (
     WHERE returnstatus = '미반납'
 );
 
--- 현재 도서의 재고가 있는지 확인하는 쿼리
+-- /하/ 현재 도서의 재고가 있는지 확인하는 쿼리
 SELECT quantity
 FROM Book
 WHERE bid = '도서번호(int)'
 
--- 도서 대출 쿼리 --
+-- /하/ 도서 대출 쿼리 --
 INSERT INTO Loan (uid, bid, loandate, returndate, returnstatus) 
 VALUES ('회원id', '도서번호(int)', '대출일(date)', '반납예정일(date)', '미반납');
 
--- 도서 재고 -1 --
+-- /하 숫자 컬럼 산술 연산/ 도서 재고 -1 --
 UPDATE Book
-SET quantity = '기존재고수량-1(int)'
+SET quantity = quantity - 1
 WHERE bid = '도서번호(int)';
 ```
 
@@ -219,7 +219,7 @@ WHERE bid = '도서번호(int)';
 
 **대출 내역 검색**
 ```SQL
--- 회원의 도서 대출 내역 검색 --
+-- /상 조인/ 회원의 도서 대출 내역 검색 --
 SELECT bookname, loandate, returndate, returnstatus, lid
 FROM Loan, Book
 WHERE Loan.bid = Book.bid
@@ -230,20 +230,20 @@ ORDER BY loandate DESC, lid DESC
 
 **도서 반납**
 ```SQL
--- 도서 반납 쿼리 --
+-- /하/ 도서 반납 쿼리 --
 UPDATE Loan
 SET returnstatus = '반납됨'
 WHERE lid = '대출번호(int)'
 
--- 도서 재고 +1을 위한 기존 도서 재고량 검색 --
+-- /상 조인/ 도서 재고 +1을 위한 기존 도서 재고량 검색 --
 SELECT Book.bid, quantity
 FROM Book, Loan
 WHERE Book.bid = Loan.bid
 AND lid = '대출 번호(int)'
 
--- 도서 재고 +1 --
+-- /하 숫자 컬럼 산술 연산/ 도서 재고 +1 --
 UPDATE Book
-SET quantity = '기존재고수량+1(int)'
+SET quantity = quantity + 1
 WHERE bid = '도서번호(int)'
 ```
 
@@ -276,7 +276,7 @@ WHERE uid = '회원id'
 **도서 검색** [일반 회원 - 도서 검색]과 동일
 
 ```SQL
--- 도서 검색 및 상세 정보 출력 --
+-- /상 중첩/ 도서 검색 및 상세 정보 출력 --
 SELECT *
 FROM Book
 WHERE bid IN (
@@ -292,10 +292,10 @@ ORDER BY bookname ASC;
 **도서 추가**
 
 ```SQL
--- 중복 도서 확인 --
+-- /하/ 중복 도서 확인 --
 SELECT * FROM Book WHERE bookname = %s
 
--- 도서 추가 쿼리 --
+-- /하/ 도서 추가 쿼리 --
 INSERT INTO Book (bookname, writer, publisher, pubdate, category, quantity) 
 VALUES ('도서명', '저자', '출판사', 'yyyy-mm-dd(출판일)', '카테고리', '재고권수(int)');
 ```
@@ -311,33 +311,33 @@ WHERE bid = '도서번호(int)'
 **도서 삭제**
 
 ```SQL
--- 해당 도서를 빌리고 있는 회원이 있는지 확인 *있으면 삭제 불가 --
+-- /하/ 해당 도서를 빌리고 있는 회원이 있는지 확인 *있으면 삭제 불가 --
 SELECT *
 FROM Loan
 WHERE bid = '도서번호(int)'
 
--- 해당 도서를 빌리고 있는 사람이 없으면 먼저 대출 내역부터 삭제 --
+-- /하/ 해당 도서를 빌리고 있는 사람이 없으면 먼저 대출 내역부터 삭제 --
 -- 해당 도서에 관한 모든 Loan 튜플이 도출됨
 SELECT lid
 FROM Loan
 WHERE bid = '도서번호(int)'
--- 위에서 도출된 모든 튜플에 대해서 삭제
+-- /하/ 위에서 도출된 모든 튜플에 대해서 삭제
 DELETE FROM Loan
 WHERE lid = '각 lid값(int)'
 
--- 도서 삭제 --
+-- /하/ 도서 삭제 --
 DELETE FROM Book
 WHERE bid = '도서번호'
 ```
 
 ### 관리자 - 회원 관리
 ```SQL
--- 전체 회원 정보 조회 --
+-- /중 문자 부분 비교/ 전체 회원 정보 조회 --
 SELECT uid, username, phone, address, email
 FROM Member
 WHERE 회원컬럼명 LIKE '%입력값%'
 
--- 회원 비밀번호 초기화 --
+-- /하/ 회원 비밀번호 초기화 --
 UPDATE Member
 SET password = '초기화 할 번호(ex.1111)'
 WHERE uid = '회원id'
@@ -345,7 +345,7 @@ WHERE uid = '회원id'
 
 ### 관리자 - 대출 관리
 ```SQL
--- 전체 대출 내역 조회 --
+-- /중 정렬/ 전체 대출 내역 조회 --
 SELECT lid, username, bookname, loandate, returndate, returnstatus
 FROM Member, Book, Loan
 WHERE Member.uid = Loan.uid
@@ -354,7 +354,7 @@ AND 대출컬럼명 LIKE '%입력값%'
 [AND returnstatus = '미반납']
 ORDER BY loandate DESC, returndate DESC
 
--- 연체 제거 --
+-- /하/ 연체 제거 --
 UPDATE Loan
 SET returnstatus = '반납됨'
 WHERE lid = '대출번호(int)'
