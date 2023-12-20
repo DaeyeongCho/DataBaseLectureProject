@@ -174,17 +174,17 @@ SELECT * FROM Member WHERE uid = '아이디'
 
 **도서 검색**
 ```SQL
--- 도서 검색--
-SELECT * 
-FROM Book 
-WHERE 도서컬럼명 LIKE '%입력값%'
-[AND category = 입력값]
-ORDER BY bookname ASC;
-
--- 도서 상세정보 --
+-- 도서 검색 및 상세 정보 출력 --
 SELECT *
 FROM Book
-WHERE bid = bid
+WHERE bid IN (
+    SELECT bid 
+    FROM Book 
+    WHERE [도서컬럼명] LIKE '%입력값%'
+    [AND category = 입력값]
+)
+ORDER BY bookname ASC;
+
 ```
 
 **도서 대출**
@@ -194,7 +194,11 @@ SELECT lid
 FROM Loan
 WHERE uid = '회원id'
 AND returndate < '반납일(date)'
-AND returnstatus = '미반납'
+AND lid IN (
+    SELECT lid
+    FROM Loan
+    WHERE returnstatus = '미반납'
+);
 
 -- 현재 도서의 재고가 있는지 확인하는 쿼리
 SELECT quantity
@@ -272,17 +276,17 @@ WHERE uid = '회원id'
 **도서 검색** [일반 회원 - 도서 검색]과 동일
 
 ```SQL
--- 도서 검색--
-SELECT * 
-FROM Book 
-WHERE 도서컬럼명 LIKE '%입력값%'
-[AND category = 입력값]
-ORDER BY bookname ASC;
-
--- 도서 상세정보 --
+-- 도서 검색 및 상세 정보 출력 --
 SELECT *
 FROM Book
-WHERE bid = bid
+WHERE bid IN (
+    SELECT bid 
+    FROM Book 
+    WHERE [도서컬럼명] LIKE '%입력값%'
+    [AND category = 입력값]
+)
+ORDER BY bookname ASC;
+
 ```
 
 **도서 추가**
